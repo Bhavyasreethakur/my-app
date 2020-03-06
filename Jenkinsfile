@@ -33,7 +33,7 @@ pipeline {
             ], 
                 credentialsId: 'nexuscredentials', 
                 groupId: 'com.mycompany.app', 
-                nexusUrl: '172.31.21.147:8081', 
+                nexusUrl: '172.31.32.6:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'samplerepo', 
