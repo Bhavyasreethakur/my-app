@@ -23,11 +23,12 @@ pipeline {
         }
         stage('Upload Jar to Nexus'){
             steps{
+                def mavenpom = readMavenPom 'pom.xml'
             nexusArtifactUploader artifacts: [
                 [
                     artifactId: 'my-app', 
                     classifier: '', 
-                    file: 'target/my-app-1.0.jar', 
+                    file: "target/my-app-${mavenpom.version}.jar", 
                     type: 'jar'
                 ]
             ], 
@@ -37,7 +38,7 @@ pipeline {
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'samplerepo', 
-                version: '1.0'
+                version: "${mavenpom.version}"
             }
         }
     }
